@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muestra de Proyectos FICB</title>
+  <style>
+    :root {
+      --navy-950: #081a2d;
+      --navy-900: #0d2238;
+      --navy-800: #18334f;
+      --teal-500: #18b79f;
+      --teal-400: #2bc7ae;
+      --gold-400: #d6a74f;
+      --slate-100: #f5f7fa;
+      --slate-200: #e7edf3;
+      --slate-300: #d1dce7;
+      --slate-500: #607286;
+      --slate-700: #32465a;
+      --white: #ffffff;
+      --shadow-lg: 0 24px 60px rgba(8, 26, 45, 0.16);
+      --shadow-md: 0 16px 36px rgba(8, 26, 45, 0.1);
+      --radius: 24px;
+      --radius-sm: 14px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(24, 183, 159, 0.1), transparent 28%),
+        linear-gradient(180deg, #eef4f8 0%, #f8fafc 42%, #eff4f8 100%);
+      color: var(--navy-900);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page-shell {
+      min-height: 100vh;
+    }
+
+    .topbar {
+      background: var(--navy-950);
+      color: rgba(255, 255, 255, 0.82);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .topbar-inner,
+    .nav-inner,
+    .hero,
+    .section-inner,
+    .footer-inner {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .topbar-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      font-size: 0.94rem;
+    }
+
+    .topbar-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      list-style: none;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(245, 247, 250, 0.88);
+      border-bottom: 1px solid rgba(13, 34, 56, 0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 88px;
+      flex-shrink: 0;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy p:first-child {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-500);
+      margin-bottom: 4px;
+    }
+
+    .brand-copy h1 {
+      font-size: clamp(1.05rem, 1.2vw + 0.9rem, 1.45rem);
+      line-height: 1.15;
+      color: var(--navy-950);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px 14px;
+      list-style: none;
+      color: var(--slate-700);
+      font-size: 0.96rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      padding: 6px 0;
+    }
+
+    .hero-wrap {
+      padding: 34px 0 28px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-main {
+      background:
+        linear-gradient(135deg, rgba(8, 26, 45, 0.96), rgba(16, 43, 68, 0.95)),
+        var(--navy-900);
+      color: var(--white);
+      border-radius: calc(var(--radius) + 4px);
+      padding: clamp(28px, 4vw, 54px);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -120px auto;
+      width: 280px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(43, 199, 174, 0.22), transparent 70%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.09);
+      color: #d7f6f0;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .hero-main h2 {
+      font-size: clamp(2.3rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      max-width: 8ch;
+    }
+
+    .hero-main h2 span {
+      color: #8ae3d3;
+    }
+
+    .hero-lead {
+      margin-top: 20px;
+      max-width: 60ch;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .button-primary,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, #21c4a9, #109cc1);
+      color: var(--navy-950);
+      box-shadow: 0 14px 28px rgba(16, 156, 193, 0.26);
+    }
+
+    .button-secondary {
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .button-primary:hover,
+    .button-secondary:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero-notes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-note {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-note strong {
+      display: block;
+      font-size: 1.08rem;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .hero-note span {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(13, 34, 56, 0.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 24px;
+    }
+
+    .panel h3 {
+      font-size: 1.15rem;
+      margin-bottom: 16px;
+      color: var(--navy-950);
+    }
+
+    .date-list {
+      display: grid;
+      gap: 14px;
+      list-style: none;
+    }
+
+    .date-item {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .date-chip {
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: #eef7f5;
+      color: var(--teal-500);
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.1;
+      font-size: 0.9rem;
+    }
+
+    .date-item p:first-child {
+      font-weight: 700;
+      color: var(--navy-950);
+      margin-bottom: 4px;
+    }
+
+    .date-item p:last-child {
+      color: var(--slate-500);
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .meta-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .meta-card {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #f7fafc, #eef3f8);
+      border: 1px solid rgba(13, 34, 56, 0.07);
+    }
+
+    .meta-card span {
+      display: block;
+      color: var(--slate-500);
+      font-size: 0.83rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .meta-card strong {
+      display: block;
+      color: var(--navy-950);
+      line-height: 1.45;
+      font-size: 1rem;
+    }
+
+    section {
+      padding: 22px 0;
+    }
+
+    .section-heading {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .section-heading span {
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal-500);
+      font-weight: 800;
+    }
+
+    .section-heading h3 {
+      font-size: clamp(1.7rem, 2vw, 2.4rem);
+      line-height: 1.05;
+      color: var(--navy-950);
+      max-width: 15ch;
+    }
+
+    .section-heading p {
+      color: var(--slate-500);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card,
+    .category-card,
+    .info-block {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(13, 34, 56, 0.08);
+      border-radius: 22px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .feature-card {
+      padding: 24px;
+    }
+
+    .feature-card strong {
+      display: block;
+      color: var(--navy-950);
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      color: var(--slate-500);
+      line-height: 1.7;
+    }
+
+    .feature-kicker {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #eef7f5;
+      color: var(--teal-500);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .layout-two {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .category-card {
+      padding: 24px;
+    }
+
+    .category-card h4 {
+      font-size: 1.16rem;
+      color: var(--navy-950);
+      margin-bottom: 12px;
+    }
+
+    .category-card p {
+      color: var(--slate-500);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .category-list {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .category-list li {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: #f4f8fb;
+      color: var(--slate-700);
+      line-height: 1.55;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 9px;
+      margin-right: 8px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+
+    .pill-teal {
+      background: #e7f7f3;
+      color: #118c77;
+    }
+
+    .pill-gold {
+      background: #faf1dd;
+      color: #9c6b16;
+    }
+
+    .pill-slate {
+      background: #edf2f7;
+      color: #516579;
+    }
+
+    .info-block {
+      padding: 24px;
+    }
+
+    .info-block + .info-block {
+      margin-top: 18px;
+    }
+
+    .info-block h4 {
+      color: var(--navy-950);
+      margin-bottom: 12px;
+      font-size: 1.06rem;
+    }
+
+    .info-block p,
+    .info-block li {
+      color: var(--slate-500);
+      line-height: 1.7;
+    }
+
+    .info-block ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .cta-section {
+      padding: 30px 0 48px;
+    }
+
+    .cta-panel {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 0 auto;
+      background:
+        linear-gradient(135deg, rgba(8, 26, 45, 0.97), rgba(15, 41, 64, 0.95)),
+        var(--navy-900);
+      color: var(--white);
+      border-radius: calc(var(--radius) + 4px);
+      padding: clamp(28px, 4vw, 44px);
+      box-shadow: var(--shadow-lg);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .cta-panel h3 {
+      font-size: clamp(1.8rem, 2.7vw, 3rem);
+      line-height: 1.02;
+      margin-bottom: 10px;
+    }
+
+    .cta-panel p {
+      max-width: 62ch;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.7;
+    }
+
+    .cta-panel .button-primary {
+      min-width: 240px;
+    }
+
+    footer {
+      background: var(--navy-950);
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 18px 24px;
+      align-items: center;
+      padding: 28px 0 36px;
+    }
+
+    .footer-logo {
+      width: 90px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 18px;
+      padding: 10px;
+    }
+
+    .footer-copy strong {
+      display: block;
+      color: var(--white);
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .footer-copy p {
+      line-height: 1.7;
+      max-width: 60ch;
+    }
+
+    .footer-meta {
+      text-align: right;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1080px) {
+      .hero,
+      .layout-two,
+      .cta-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .cards-grid,
+      .category-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cta-panel .button-primary {
+        min-width: 0;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar-inner,
+      .nav-inner {
+        width: min(calc(100% - 24px), var(--max-width));
+      }
+
+      .hero,
+      .section-inner,
+      .footer-inner,
+      .cta-panel {
+        width: min(calc(100% - 24px), var(--max-width));
+      }
+
+      .nav-inner,
+      .brand,
+      .footer-inner {
+        align-items: flex-start;
+      }
+
+      .nav-inner,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .brand-logo {
+        width: 74px;
+      }
+
+      .hero-main {
+        border-radius: 28px;
+      }
+
+      .hero-notes,
+      .cards-grid,
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .date-item {
+        grid-template-columns: 1fr;
+      }
+
+      .date-chip {
+        width: fit-content;
+        min-width: 88px;
+      }
+
+      .button-primary,
+      .button-secondary {
+        width: 100%;
+      }
+
+      .footer-meta {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="topbar">
+      <div class="topbar-inner">
+        <ul class="topbar-list">
+          <li>XXV Semana de la Ingenieria</li>
+          <li>Facultad de Ingenieria y Ciencias Basicas</li>
+          <li>Universidad Central</li>
+        </ul>
+        <div>20 al 23 de mayo de 2026</div>
+      </div>
+    </div>
+
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="brand">
+          <img class="brand-logo" src="logo.png" alt="Logo Universidad Central">
+          <div class="brand-copy">
+            <p>Semana de la Ingenieria</p>
+            <h1>Muestra de Proyectos FICB</h1>
+          </div>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#evento">Evento</a></li>
+          <li><a href="#categorias">Categorias</a></li>
+          <li><a href="#participacion">Participacion</a></li>
+          <li><a href="#inscripcion">Inscripcion</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero-wrap" id="evento">
+        <section class="hero">
+          <div class="hero-main">
+            <div class="eyebrow">Convocatoria abierta 2026</div>
+            <h2>Muestra de <span>proyectos</span> que visibiliza el talento FICB</h2>
+            <p class="hero-lead">
+              Un espacio para presentar propuestas de todos los programas de la Facultad de Ingenieria y Ciencias Basicas, con proyectos que pueden dialogar entre multiples categorias, enfoques y niveles de formacion. Durante la Semana de la Ingenieria, la comunidad universitaria podra conocer iniciativas con impacto academico, cientifico, tecnologico y social.
+            </p>
+            <div class="hero-actions">
+              <a class="button-primary" href="https://forms.gle/AvT9kctKPm8zHSCJ6" target="_blank" rel="noreferrer">Inscribir proyecto</a>
+              <a class="button-secondary" href="#categorias">Ver categorias</a>
+            </div>
+            <div class="hero-notes">
+              <div class="hero-note">
+                <strong>Multiples categorias</strong>
+                <span>Los proyectos pueden relacionarse con distintos campos y lineas de trabajo de la facultad.</span>
+              </div>
+              <div class="hero-note">
+                <strong>Todos los programas</strong>
+                <span>Participan estudiantes de pregrado y posgrado de la Universidad Central.</span>
+              </div>
+              <div class="hero-note">
+                <strong>Formato academico</strong>
+                <span>Prototipos y posters en una muestra clara, ordenada y abierta al dialogo.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-side">
+            <div class="panel">
+              <h3>Fechas clave</h3>
+              <ul class="date-list">
+                <li class="date-item">
+                  <div class="date-chip">12 mayo</div>
+                  <div>
+                    <p>Cierre de inscripciones</p>
+                    <p>Ultimo dia para registrar el proyecto en el formulario oficial.</p>
+                  </div>
+                </li>
+                <li class="date-item">
+                  <div class="date-chip">15 mayo</div>
+                  <div>
+                    <p>Confirmacion</p>
+                    <p>Publicacion y notificacion de proyectos seleccionados para la muestra.</p>
+                  </div>
+                </li>
+                <li class="date-item">
+                  <div class="date-chip">23 mayo</div>
+                  <div>
+                    <p>Presentacion</p>
+                    <p>Exhibicion presencial de 9:00 a.m. a 12:00 p.m. en el nuevo campus.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="panel">
+              <h3>Informacion general</h3>
+              <div class="meta-stack">
+                <div class="meta-card">
+                  <span>Lugar</span>
+                  <strong>Nuevo campus, piso 1<br>Centro Cultural y pasillo de Ingenieria</strong>
+                </div>
+                <div class="meta-card">
+                  <span>Modalidades</span>
+                  <strong>Pregrado: prototipo o poster<br>Posgrado: poster</strong>
+                </div>
+                <div class="meta-card">
+                  <span>Enfoque</span>
+                  <strong>Proyectos con componente cientifico, tecnologico, innovador o aplicado.</strong>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+      </div>
+
+      <section>
+        <div class="section-inner">
+          <div class="section-heading">
+            <span>Por que esta muestra importa</span>
+            <h3>Una vitrina real para el trabajo de la facultad</h3>
+            <p>
+              La pagina fue pensada para explicar el evento con claridad, sin apariencia de volante improvisado. La muestra permite reunir proyectos de la FICB en un mismo recorrido, fortalecer la circulacion de ideas entre programas y mostrar como la ingenieria y las ciencias basicas se cruzan en soluciones concretas.
+            </p>
+          </div>
+
+          <div class="cards-grid">
+            <article class="feature-card">
+              <div class="feature-kicker">Interdisciplinar</div>
+              <strong>Proyectos que conectan areas</strong>
+              <p>Las iniciativas pueden dialogar con varias categorias, lo que refleja mejor la manera en que hoy se construye conocimiento dentro de la facultad.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-kicker">Visible</div>
+              <strong>Presentacion clara para visitantes</strong>
+              <p>La informacion esta organizada para que estudiantes, docentes, jurados e invitados entiendan rapido que se presenta, quien participa y cuando ocurre.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-kicker">Institucional</div>
+              <strong>Una imagen mas sobria y cuidada</strong>
+              <p>Se prioriza una composicion limpia, una jerarquia tipografica consistente y un uso del logo que se vea natural dentro del sitio.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="categorias">
+        <div class="section-inner">
+          <div class="section-heading">
+            <span>Categorias y niveles</span>
+            <h3>Participacion organizada por trayectorias de formacion</h3>
+            <p>
+              Los proyectos provienen de todos los programas de la facultad y pueden ubicarse en mas de una categoria segun su alcance, semestre, tipo de desarrollo o enfoque academico.
+            </p>
+          </div>
+
+          <div class="category-grid">
+            <article class="category-card">
+              <h4>Pregrado general</h4>
+              <p>Para programas con organizacion por etapas de avance dentro del plan de estudios.</p>
+              <ul class="category-list">
+                <li><span class="pill pill-teal">Junior</span>I, II, III y IV semestre en planes nuevos.</li>
+                <li><span class="pill pill-slate">Senior</span>V, VI y VII semestre en planes antiguos.</li>
+                <li><span class="pill pill-gold">Master</span>VIII, IX y X semestre en planes antiguos.</li>
+              </ul>
+            </article>
+
+            <article class="category-card">
+              <h4>Biologia plan antiguo</h4>
+              <p>Distribucion particular para proyectos del programa de Biologia con la estructura anterior.</p>
+              <ul class="category-list">
+                <li><span class="pill pill-slate">Senior</span>IV y V semestre.</li>
+                <li><span class="pill pill-gold">Master</span>VI, VII y VIII semestre.</li>
+              </ul>
+            </article>
+
+            <article class="category-card">
+              <h4>Posgrado</h4>
+              <p>Espacio para propuestas avanzadas con foco en investigacion aplicada, desarrollo o transferencia de conocimiento.</p>
+              <ul class="category-list">
+                <li><span class="pill pill-teal">Poster</span>Todos los semestres participan mediante presentacion en poster.</li>
+                <li><span class="pill pill-slate">Flexible</span>Puede articularse con diferentes lineas tematicas segun el proyecto.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="participacion">
+        <div class="section-inner layout-two">
+          <div>
+            <div class="section-heading">
+              <span>Participacion</span>
+              <h3>Como se presenta cada proyecto</h3>
+              <p>
+                La muestra combina formatos accesibles para exhibir ideas, procesos y resultados. El objetivo es que cada equipo pueda comunicar su trabajo de manera comprensible, bien montada y coherente con el tipo de proyecto.
+              </p>
+            </div>
+
+            <div class="cards-grid">
+              <article class="feature-card">
+                <div class="feature-kicker">Pregrado</div>
+                <strong>Prototipo o poster</strong>
+                <p>Los equipos de pregrado pueden elegir el formato que mejor exprese el valor de su propuesta y su nivel de desarrollo.</p>
+              </article>
+              <article class="feature-card">
+                <div class="feature-kicker">Posgrado</div>
+                <strong>Poster academico</strong>
+                <p>El poster permite presentar objetivos, metodologia, resultados y proyecciones con una narrativa mas sintetica.</p>
+              </article>
+              <article class="feature-card">
+                <div class="feature-kicker">Muestra</div>
+                <strong>Recorrido abierto</strong>
+                <p>La circulacion del publico favorece conversaciones entre programas, semestres y areas de interes.</p>
+              </article>
+            </div>
+          </div>
+
+          <aside>
+            <div class="info-block">
+              <h4>Ten en cuenta</h4>
+              <ul>
+                <li>La propuesta debe representar un proceso o resultado del trabajo academico desarrollado dentro de la facultad.</li>
+                <li>La informacion presentada debe ser clara para visitantes de distintos perfiles, no solo para especialistas.</li>
+                <li>Si un proyecto conversa con varias categorias, eso puede destacarse en su presentacion.</li>
+              </ul>
+            </div>
+
+            <div class="info-block">
+              <h4>Publico de la muestra</h4>
+              <p>
+                Estudiantes, docentes, directivos, egresados e invitados podran recorrer el espacio y conocer proyectos de todos los programas de la FICB durante la Semana de la Ingenieria.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="cta-section" id="inscripcion">
+        <div class="cta-panel">
+          <div>
+            <h3>Postula tu proyecto y haz parte de la muestra</h3>
+            <p>
+              La inscripcion estara disponible hasta el martes 12 de mayo de 2026. Si tu proyecto representa una apuesta valiosa de la facultad, este es el espacio para compartirlo con la comunidad universitaria.
+            </p>
+          </div>
+          <a class="button-primary" href="https://forms.gle/AvT9kctKPm8zHSCJ6" target="_blank" rel="noreferrer">Ir al formulario</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <img class="footer-logo" src="logo.png" alt="Logo Universidad Central">
+        <div class="footer-copy">
+          <strong>Facultad de Ingenieria y Ciencias Basicas</strong>
+          <p>Muestra de Proyectos en el marco de la XXV Semana de la Ingenieria. Universidad Central.</p>
+        </div>
+        <div class="footer-meta">
+          <div>Nuevo campus, piso 1</div>
+          <div>20 al 23 de mayo de 2026</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
